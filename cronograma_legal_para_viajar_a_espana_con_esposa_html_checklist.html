@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Cronograma Agosto – Diciembre 2025 — Nacionalidad y Viaje a España
+    </title>
+    <style>
+      :root {
+        --bg: #0f172a; /* slate-900 */
+        --panel: #111827; /* gray-900 */
+        --muted: #94a3b8; /* slate-400 */
+        --text: #e5e7eb; /* gray-200 */
+        --accent: #22c55e; /* green-500 */
+        --accent-2: #38bdf8; /* sky-400 */
+        --danger: #ef4444; /* red-500 */
+        --warn: #f59e0b; /* amber-500 */
+        --card: #0b1220; /* deep */
+        --border: #1f2937; /* gray-800 */
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        background: radial-gradient(
+            1200px 600px at 10% -10%,
+            #0b1431,
+            transparent
+          ),
+          radial-gradient(1000px 800px at 120% 10%, #0b2a2f, transparent),
+          var(--bg);
+        color: var(--text);
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 32px auto;
+        padding: 24px;
+      }
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0)
+        );
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 20px;
+      }
+      h1 {
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        margin: 0;
+      }
+      .subtitle {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      button,
+      .btn {
+        appearance: none;
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, #0f1b2f, #0b1220);
+        color: var(--text);
+        padding: 10px 14px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 0.06s ease, box-shadow 0.2s ease,
+          border-color 0.2s ease;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+      button:hover {
+        transform: translateY(-1px);
+        border-color: #284265;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 18px;
+        margin-top: 18px;
+      }
+      .card {
+        grid-column: span 12;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.005)
+        );
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+      }
+      @media (min-width: 900px) {
+        .col-6 {
+          grid-column: span 6;
+        }
+      }
+      @media (min-width: 900px) {
+        .col-4 {
+          grid-column: span 4;
+        }
+      }
+      .card h2 {
+        margin: 0.2rem 0 0.6rem;
+        font-size: 1.2rem;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: #0b1220;
+      }
+      .list {
+        display: grid;
+        gap: 10px;
+        margin: 10px 0;
+      }
+      .task {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        align-items: start;
+        border: 1px dashed var(--border);
+        border-radius: 14px;
+        padding: 12px;
+      }
+      .task input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        accent-color: var(--accent);
+      }
+      .task .title {
+        font-weight: 700;
+      }
+      .task small {
+        display: block;
+        color: var(--muted);
+      }
+      .pill {
+        display: inline-block;
+        padding: 3px 8px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        border: 1px solid var(--border);
+      }
+      .pill.warn {
+        color: #fff;
+        background: linear-gradient(180deg, #2b1a00, #241400);
+        border-color: #3a2200;
+      }
+      .pill.ok {
+        color: #83cba6;
+        background: linear-gradient(180deg, #052b12, #041e0e);
+        border-color: #123c24;
+      }
+      .pill.info {
+        color: #5ba7cb;
+        background: linear-gradient(180deg, #042231, #031722);
+        border-color: #0e2b3b;
+      }
+      .note {
+        margin-top: 8px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .progress {
+        width: 100%;
+        height: 12px;
+        border-radius: 999px;
+        background: #0b1220;
+        border: 1px solid var(--border);
+        overflow: hidden;
+        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.35);
+      }
+      .progress > div {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        transition: width 0.4s ease;
+      }
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      @media (min-width: 800px) {
+        .two-col {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      label {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      input[type="date"],
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: #0b1220;
+        color: var(--text);
+      }
+      .footer {
+        margin: 28px 0 10px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      .hr {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #213045, transparent);
+        margin: 14px 0;
+      }
+      .warnbox {
+        border: 1px solid #53330a;
+        background: linear-gradient(180deg, #1b1204, #140d03);
+        border-radius: 14px;
+        padding: 12px;
+      }
+      .okbox {
+        border: 1px solid #0e3a1a;
+        background: linear-gradient(180deg, #061409, #071508);
+        border-radius: 14px;
+        padding: 12px;
+      }
+      .tiny {
+        font-size: 0.8rem;
+      }
+      .kbd {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        background: #0d1a2a;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 2px 6px;
+      }
+      .printonly {
+        display: none;
+      }
+      @media print {
+        body {
+          background: white;
+          color: black;
+        }
+        header,
+        .actions {
+          display: none;
+        }
+        .card {
+          break-inside: avoid;
+        }
+        .printonly {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div>
+          <h1>Cronograma legal — Agosto a Diciembre 2025</h1>
+          <div class="subtitle">
+            Objetivo: viajar a España en diciembre con su esposa, usted como
+            ciudadano español; ella como familiar de ciudadano de la UE.
+          </div>
+          <div class="subtitle tiny">
+            Horario considerado:
+            <span class="kbd">Docente 7:00–17:00</span> (usted) ·
+            <span class="kbd">Farmacéutica 8:00–21:00</span> (ella, con un día
+            libre a elección)
+          </div>
+        </div>
+        <div class="actions">
+          <button id="btnSave" title="Guardar progreso en este navegador">
+            💾 Guardar
+          </button>
+          <button id="btnLoad" title="Cargar el progreso guardado">
+            📂 Cargar
+          </button>
+          <button id="btnClear" title="Borrar progreso guardado">
+            🧹 Limpiar
+          </button>
+          <button id="btnPrint" title="Imprimir o exportar a PDF">
+            🖨️ Imprimir / PDF
+          </button>
+        </div>
+      </header>
+
+      <div class="grid">
+        <section class="card col-6">
+          <h2>Progreso general</h2>
+          <div class="progress" aria-label="Progreso total">
+            <div id="bar"></div>
+          </div>
+          <div class="note" id="pct">0% completado</div>
+        </section>
+
+        <section class="card col-6">
+          <h2>Feriados útiles en Guatemala (2025)</h2>
+          <ul class="list" aria-label="Feriados">
+            <li class="task">
+              <div class="pill info">15 agosto</div>
+              <div>
+                <div class="title">Virgen de la Asunción</div>
+                <small
+                  >Feriado municipal (Ciudad de Guatemala). Útil para adelantar
+                  papeles si aplica.</small
+                >
+              </div>
+            </li>
+            <li class="task">
+              <div class="pill ok">15 septiembre</div>
+              <div>
+                <div class="title">Independencia de Guatemala</div>
+                <small
+                  >Feriado nacional (lunes 15/09/2025). Ideal para trámites sin
+                  afectar clases.</small
+                >
+              </div>
+            </li>
+            <li class="task">
+              <div class="pill info">20 octubre</div>
+              <div>
+                <div class="title">Día de la Revolución</div>
+                <small
+                  >Feriado nacional (lunes 20/10/2025). Usar para citas
+                  notariales/consulares.</small
+                >
+              </div>
+            </li>
+            <li class="task">
+              <div class="pill warn">01 noviembre</div>
+              <div>
+                <div class="title">Todos los Santos</div>
+                <small
+                  >Este año cae sábado. Impacto menor en citas de semana.</small
+                >
+              </div>
+            </li>
+            <li class="task">
+              <div class="pill ok">25 diciembre</div>
+              <div>
+                <div class="title">Navidad</div>
+                <small
+                  >Para planificar llegada a España y oficinas cerradas.</small
+                >
+              </div>
+            </li>
+          </ul>
+          <div class="note">
+            Ajuste según su localidad y calendarios oficiales del Consulado.
+          </div>
+        </section>
+
+        <!-- AGOSTO -->
+        <section class="card">
+          <h2>Agosto 2025 — Iniciar nacionalidad por opción (usted)</h2>
+          <div class="list">
+            <label
+              >Fecha objetivo del mes <input type="date" id="m8_date"
+            /></label>
+            <div class="task">
+              <input type="checkbox" id="t8_1" />
+              <div>
+                <div class="title">
+                  Solicitar cita en el Consulado de España (nacionalidad por
+                  opción)
+                </div>
+                <small
+                  >Hágalo fuera del horario laboral. Guarde comprobante de
+                  cita.</small
+                >
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t8_2" />
+              <div>
+                <div class="title">
+                  Pedir <em>certificado literal de nacimiento</em> de su madre
+                  española
+                </div>
+                <small
+                  >Por Registro Civil español o a través del Consulado.</small
+                >
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t8_3" />
+              <div>
+                <div class="title">
+                  Obtener su <em>certificado de nacimiento</em> guatemalteco
+                  apostillado
+                </div>
+                <small
+                  >Legalizar/apostillar; revisar que nombres y fechas
+                  coincidan.</small
+                >
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t8_4" />
+              <div>
+                <div class="title">
+                  Preparar identificación y formularios de nacionalidad
+                </div>
+                <small
+                  >DPI, pasaporte, formularios firmados, tasas si
+                  aplican.</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="okbox tiny">
+            Opinión profesional: Empezar la nacionalidad por opción YA es el
+            acelerador clave; evita depender de reagrupación y le permite viajar
+            como ciudadano.
+          </div>
+        </section>
+
+        <!-- SEPTIEMBRE -->
+        <section class="card">
+          <h2>Septiembre 2025 — Matrimonio e inscripción en España</h2>
+          <div class="list">
+            <label
+              >Fecha objetivo del mes <input type="date" id="m9_date"
+            /></label>
+            <div class="task">
+              <input type="checkbox" id="t9_1" />
+              <div>
+                <div class="title">Celebrar matrimonio civil en Guatemala</div>
+                <small
+                  >Sábado recomendado para no interferir con sus jornadas (7–17
+                  y 8–21).</small
+                >
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t9_2" />
+              <div>
+                <div class="title">Apostillar el acta de matrimonio</div>
+                <small>Requisito para validez internacional.</small>
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t9_3" />
+              <div>
+                <div class="title">
+                  Solicitar <em>inscripción del matrimonio</em> en el Registro
+                  Civil español (vía Consulado)
+                </div>
+                <small
+                  >Entregar acta apostillada, formularios y prueba de
+                  vínculo.</small
+                >
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t9_4" />
+              <div>
+                <div class="title">
+                  Reservar pre-cita para visado/entrada como familiar de
+                  ciudadano UE (ella)
+                </div>
+                <small
+                  >Según indicaciones del Consulado; permita tiempo de
+                  resolución.</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="warnbox tiny">
+            Consejo: Use el feriado nacional del 15/09 (lunes) para avanzar sin
+            afectar clases. Coordine el día libre de ella para diligencias
+            críticas.
+          </div>
+        </section>
+
+        <!-- OCTUBRE -->
+        <section class="card">
+          <h2>
+            Octubre 2025 — Seguimiento a nacionalidad y documentos de viaje
+          </h2>
+          <div class="list">
+            <label
+              >Fecha objetivo del mes <input type="date" id="m10_date"
+            /></label>
+            <div class="task">
+              <input type="checkbox" id="t10_1" />
+              <div>
+                <div class="title">
+                  Dar seguimiento a resolución de su nacionalidad
+                </div>
+                <small
+                  >Correo al Consulado; tener a mano número de
+                  expediente.</small
+                >
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t10_2" />
+              <div>
+                <div class="title">
+                  En cuanto concedan nacionalidad, solicitar
+                  <em>pasaporte español</em>
+                </div>
+                <small
+                  >Pida cita inmediata. Pasaporte indispensable para viajar como
+                  ciudadano.</small
+                >
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t10_3" />
+              <div>
+                <div class="title">
+                  Ella: preparar carpeta de entrada como familiar de ciudadano
+                  de la UE
+                </div>
+                <small
+                  >Acta de matrimonio inscrita en España, pasaporte vigente,
+                  medios, seguro si lo piden.</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="note tiny">
+            Feriado 20/10 (lunes) útil para terminar apostillas o recoger
+            documentos.
+          </div>
+        </section>
+
+        <!-- NOVIEMBRE -->
+        <section class="card">
+          <h2>Noviembre 2025 — Cerrar logística de viaje</h2>
+          <div class="list">
+            <label
+              >Fecha objetivo del mes <input type="date" id="m11_date"
+            /></label>
+            <div class="task">
+              <input type="checkbox" id="t11_1" />
+              <div>
+                <div class="title">Emitido su pasaporte español</div>
+                <small>Verifique vigencia y datos.</small>
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t11_2" />
+              <div>
+                <div class="title">
+                  Ella: visado/derecho de entrada como familiar de ciudadano UE
+                  listo
+                </div>
+                <small
+                  >Según vía consular o normativa de entrada vigente.</small
+                >
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t11_3" />
+              <div>
+                <div class="title">
+                  Comprar boletos y reservar alojamiento temporal en España
+                </div>
+                <small
+                  >Conserve recibos para empadronamiento y trámites
+                  iniciales.</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="note tiny">
+            1/11 cae sábado — impacto bajo en gestiones de oficina.
+          </div>
+        </section>
+
+        <!-- DICIEMBRE -->
+        <section class="card">
+          <h2>Diciembre 2025 — Llegada a España y residencia de ella</h2>
+          <div class="list">
+            <label>Fecha de viaje <input type="date" id="m12_date" /></label>
+            <div class="task">
+              <input type="checkbox" id="t12_1" />
+              <div>
+                <div class="title">Viajar juntos a España</div>
+                <small
+                  >Usted con pasaporte español. Ella como familiar de ciudadano
+                  de la UE.</small
+                >
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t12_2" />
+              <div>
+                <div class="title">
+                  Solicitar
+                  <em>Tarjeta de Residencia de Familiar de Comunitario</em>
+                  (ella)
+                </div>
+                <small
+                  >En los primeros días; pedir cita en Oficina de Extranjería.
+                  Empadronamiento y seguro.</small
+                >
+              </div>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t12_3" />
+              <div>
+                <div class="title">Empadronamiento en su municipio</div>
+                <small>Requisito para varios trámites posteriores.</small>
+              </div>
+            </div>
+          </div>
+          <div class="okbox tiny">
+            Ruta más rápida para ella: tras 12 meses de residencia legal
+            continua como esposa de español, solicitar nacionalidad por
+            residencia (plazo especial de 1 año).
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Notas y recordatorios</h2>
+          <div class="two-col">
+            <label
+              >Observaciones generales
+              <input
+                type="text"
+                id="notes_general"
+                placeholder="Ej.: Pendiente literal de nacimiento de mamá; confirmar inscripción matrimonio"
+              />
+            </label>
+            <label
+              >Contacto del Consulado / Expediente
+              <input
+                type="text"
+                id="notes_consulado"
+                placeholder="Tel., email, nº de expediente"
+              />
+            </label>
+          </div>
+          <div class="hr"></div>
+          <div class="tiny">
+            Buenas prácticas: conserve copias digitales (PDF) de todo, revise
+            concordancia de nombres/fechas, y lleve siempre originales a las
+            citas.
+          </div>
+        </section>
+
+        <section class="card col-4">
+          <h2>Checklist rápido — Usted</h2>
+          <ul class="list">
+            <li class="task">
+              <input type="checkbox" id="q_u_1" />
+              <div>
+                <div class="title">Nacionalidad por opción solicitada</div>
+                <small>Expediente y justificantes guardados.</small>
+              </div>
+            </li>
+            <li class="task">
+              <input type="checkbox" id="q_u_2" />
+              <div>
+                <div class="title">Nacionalidad concedida</div>
+                <small>Resolución recibida/verificada.</small>
+              </div>
+            </li>
+            <li class="task">
+              <input type="checkbox" id="q_u_3" />
+              <div>
+                <div class="title">Pasaporte español emitido</div>
+                <small>Datos correctos y vigente.</small>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="card col-4">
+          <h2>Checklist rápido — Ella</h2>
+          <ul class="list">
+            <li class="task">
+              <input type="checkbox" id="q_e_1" />
+              <div>
+                <div class="title">Matrimonio celebrado</div>
+                <small>Acta apostillada en mano.</small>
+              </div>
+            </li>
+            <li class="task">
+              <input type="checkbox" id="q_e_2" />
+              <div>
+                <div class="title">Matrimonio inscrito en España</div>
+                <small>Certificación/registro confirmado.</small>
+              </div>
+            </li>
+            <li class="task">
+              <input type="checkbox" id="q_e_3" />
+              <div>
+                <div class="title">Visado/derecho de entrada listo</div>
+                <small>Documentación revisada.</small>
+              </div>
+            </li>
+            <li class="task">
+              <input type="checkbox" id="q_e_4" />
+              <div>
+                <div class="title">
+                  Tarjeta de residencia solicitada (España)
+                </div>
+                <small>Cita pedida y expediente presentado.</small>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="card col-4">
+          <h2>Metas críticas</h2>
+          <ul class="list">
+            <li class="task">
+              <input type="checkbox" id="m_c_1" />
+              <div>
+                <div class="title">Viajar en diciembre 2025</div>
+                <small>Boletos y alojamiento confirmados.</small>
+              </div>
+            </li>
+            <li class="task">
+              <input type="checkbox" id="m_c_2" />
+              <div>
+                <div class="title">Residencia de ella concedida</div>
+                <small>Tarjeta en trámite/emitida.</small>
+              </div>
+            </li>
+            <li class="task">
+              <input type="checkbox" id="m_c_3" />
+              <div>
+                <div class="title">Nacionalidad de ella en 2026</div>
+                <small>Elegible tras 12 meses de residencia continua.</small>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Referencias oficiales</h2>
+          <ul class="list">
+            <li class="task">
+              <div class="pill info">Ministerio de Justicia</div>
+              <div>
+                <div class="title">
+                  Nacionalidad española (por opción / por residencia)
+                </div>
+                <small>Guías y requisitos actualizados.</small>
+              </div>
+            </li>
+            <li class="task">
+              <div class="pill info">Consulado de España en Guatemala</div>
+              <div>
+                <div class="title">Citas, registros civiles y visados</div>
+                <small>Verifique formularios y plazos vigentes.</small>
+              </div>
+            </li>
+          </ul>
+          <div class="tiny">
+            Nota: revise normativa vigente antes de cada cita; las oficinas
+            pueden actualizar requisitos y disponibilidad.
+          </div>
+        </section>
+
+        <div class="card">
+          Hecho para Señor Sánchez · Versión 1.0 — Guardado local en su
+          navegador. Para compartir, use
+          <span class="kbd">Imprimir / PDF</span>.
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // --- utilidades de guardado ---
+      const KEY = "cronograma_es_2025_v1";
+
+      function allInteractive() {
+        return Array.from(
+          document.querySelectorAll(
+            'input[type="checkbox"], input[type="date"], input[type="text"], select'
+          )
+        );
+      }
+
+      function save() {
+        const data = {};
+        allInteractive().forEach((el) => {
+          if (el.type === "checkbox") data[el.id] = el.checked;
+          else data[el.id] = el.value || "";
+        });
+        localStorage.setItem(KEY, JSON.stringify(data));
+        alert("Progreso guardado en este navegador.");
+      }
+      function load() {
+        const raw = localStorage.getItem(KEY);
+        if (!raw) {
+          alert("No hay datos guardados aún.");
+          return;
+        }
+        const data = JSON.parse(raw);
+        allInteractive().forEach((el) => {
+          if (data.hasOwnProperty(el.id)) {
+            if (el.type === "checkbox") el.checked = !!data[el.id];
+            else el.value = data[el.id];
+          }
+        });
+        recalc();
+        alert("Progreso cargado.");
+      }
+      function clearAll() {
+        if (confirm("¿Borrar todo el progreso guardado?")) {
+          localStorage.removeItem(KEY);
+          allInteractive().forEach((el) => {
+            if (el.type === "checkbox") el.checked = false;
+            else el.value = "";
+          });
+          recalc();
+        }
+      }
+
+      // --- progreso ---
+      function recalc() {
+        const boxes = Array.from(
+          document.querySelectorAll('input[type="checkbox"]')
+        );
+        const done = boxes.filter((b) => b.checked).length;
+        const pct = boxes.length ? Math.round((done * 100) / boxes.length) : 0;
+        document.getElementById("bar").style.width = pct + "%";
+        document.getElementById("pct").textContent = pct + "% completado";
+      }
+
+      allInteractive().forEach((el) => {
+        el.addEventListener("change", recalc);
+      });
+
+      document.getElementById("btnSave").addEventListener("click", save);
+      document.getElementById("btnLoad").addEventListener("click", load);
+      document.getElementById("btnClear").addEventListener("click", clearAll);
+      document
+        .getElementById("btnPrint")
+        .addEventListener("click", () => window.print());
+
+      // Inicializar
+      recalc();
+    </script>
+  </body>
+</html>
